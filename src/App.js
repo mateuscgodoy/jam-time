@@ -4,6 +4,7 @@ import Background from "./Components/Background/Background";
 import SearchResult from "./Components/SearchResults/SearchResults";
 import Playlist from "./Components/Playlist/Playlist";
 import SearchBar from "./Components/SearchBar/SearchBar";
+import Authorization from "./Components/Auth/Authorization";
 
 const tracks = [
   {
@@ -54,6 +55,7 @@ function App() {
 
   return (
     <Background>
+      <Authorization />
       <section id="main-body">
         <h1>
           Jam
