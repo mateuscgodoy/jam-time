@@ -9,7 +9,7 @@ function Track({ trackInfo }) {
         {trackInfo.album} | {trackInfo.year}
       </p>
       <p>
-        <em>{trackInfo.band}</em>
+        <em>{trackInfo.artists}</em>
       </p>
     </div>
   );

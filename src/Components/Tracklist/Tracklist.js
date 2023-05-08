@@ -10,7 +10,7 @@ function Tracklist({ tracks, buttonElement, title }) {
       i++;
       return (
         <li
-          key={track.song}
+          key={`${i}${track.song}`}
           className={i % 2 === 0 ? "default-track list-item" : "default-track"}
         >
           <Track trackInfo={track} />

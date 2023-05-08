@@ -7,7 +7,7 @@ import {
 function Authorization() {
   const params = new URLSearchParams(window.location.search);
   const code = params.get("code");
-  if (!code) {
+  if (!code && sessionStorage.getItem(appKeys.tokenId) === null) {
     redirectToAuthCodeFlow(appKeys.clientId, appKeys.redirectUri);
   } else if (sessionStorage.getItem(appKeys.tokenId) === null) {
     getAccessToken(appKeys.clientId, code, appKeys.redirectUri).then(

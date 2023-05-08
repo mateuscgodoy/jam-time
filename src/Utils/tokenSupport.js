@@ -35,6 +35,17 @@ export async function getAccessToken(clientId, code, redirectUri) {
   return access_token;
 }
 
+export async function fetchWebApi(endpoint, token, method, body) {
+  const res = await fetch(`https://api.spotify.com/${endpoint}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method,
+    body: JSON.stringify(body),
+  });
+  return await res.json();
+}
+
 function generateCodeVerifier(length) {
   let text = "";
   let possible =

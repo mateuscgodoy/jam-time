@@ -6,29 +6,9 @@ import Playlist from "./Components/Playlist/Playlist";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import Authorization from "./Components/Auth/Authorization";
 
-const tracks = [
-  {
-    song: "Rebollation",
-    band: "Red Hot Chilly Peppers",
-    year: "1988",
-    album: "The Number of the Beast",
-  },
-  {
-    song: "Banho de Lua",
-    band: "Angelica",
-    year: "1212",
-    album: "Albom",
-  },
-  {
-    song: "Ciranda-Cirandinha",
-    band: "Palhaço Tragédia",
-    year: "20223",
-    album: "Album Best Golden Increduble Hits",
-  },
-];
-
 function App() {
   const [selectedTracks, setSelectedTracks] = useState([]);
+  const [searchResult, setSearchResult] = useState(null);
 
   function selectTrack(event) {
     const selectedSong =
@@ -39,8 +19,10 @@ function App() {
       return;
     }
 
-    const trackIndex = tracks.findIndex((track) => track.song === selectedSong);
-    const newSelection = [...selectedTracks, tracks[trackIndex]];
+    const trackIndex = searchResult.findIndex(
+      (track) => track.song === selectedSong
+    );
+    const newSelection = [...selectedTracks, searchResult[trackIndex]];
     setSelectedTracks(newSelection);
   }
 
@@ -62,10 +44,13 @@ function App() {
           <br />
           Time!
         </h1>
-        <SearchBar />
+        <SearchBar setSearchResult={setSearchResult} />
         <section className="lists-section">
           <div>
-            <SearchResult searchResult={tracks} handleClick={selectTrack} />
+            <SearchResult
+              searchResult={searchResult}
+              handleClick={selectTrack}
+            />
           </div>
           <div>
             <Playlist tracks={selectedTracks} handleClick={removeTrack} />
