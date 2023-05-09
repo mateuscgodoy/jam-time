@@ -23,7 +23,7 @@ function Tracklist({ tracks, buttonElement, title }) {
   return (
     <>
       <h2>{title}</h2>
-      <ul>{trackListItems}</ul>
+      <ul className="tracklist">{trackListItems}</ul>
     </>
   );
 }

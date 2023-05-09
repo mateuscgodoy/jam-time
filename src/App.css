@@ -214,6 +214,10 @@ ul li {
   width: 100%;
 }
 
+.lists-section>div {
+  width: 40%;
+}
+
 /* Track Settings */
 .track-button {
   border-radius: 50%;
@@ -224,9 +228,8 @@ ul li {
   font-size: 1.05rem;
 }
 
-
-
 /* Tracklist Settings */
+
 .default-track {
   display: flex;
   justify-content: space-between;
