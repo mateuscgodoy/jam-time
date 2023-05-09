@@ -5,6 +5,7 @@ import SearchResult from "./Components/SearchResults/SearchResults";
 import Playlist from "./Components/Playlist/Playlist";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import Authorization from "./Components/Auth/Authorization";
+import Login from "./Components/Login/Login";
 
 function App() {
   const [selectedTracks, setSelectedTracks] = useState([]);
@@ -44,6 +45,7 @@ function App() {
           <br />
           Time!
         </h1>
+        <Login />
         <SearchBar setSearchResult={setSearchResult} />
         <section className="lists-section">
           <div>
