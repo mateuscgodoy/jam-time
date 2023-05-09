@@ -1,8 +1,10 @@
+import { appKeys } from "../keys";
+
 export async function redirectToAuthCodeFlow(clientId, redirectUri) {
   const verifier = generateCodeVerifier(128);
   const challenge = await generateCodeChallenge(verifier);
 
-  localStorage.setItem("verifier", verifier);
+  sessionStorage.setItem("verifier", verifier);
 
   const params = new URLSearchParams();
   params.append("client_id", clientId);
@@ -10,7 +12,7 @@ export async function redirectToAuthCodeFlow(clientId, redirectUri) {
   params.append("redirect_uri", redirectUri);
   params.append(
     "scope",
-    "user-read-private playlist-modify-private playlist-modify-public"
+    "user-read-private playlist-modify-private playlist-modify-public user-read-email"
   );
   params.append("code_challenge_method", "S256");
   params.append("code_challenge", challenge);
@@ -19,7 +21,7 @@ export async function redirectToAuthCodeFlow(clientId, redirectUri) {
 }
 
 export async function getAccessToken(clientId, code, redirectUri) {
-  const verifier = localStorage.getItem("verifier");
+  const verifier = sessionStorage.getItem("verifier");
 
   const params = new URLSearchParams();
   params.append("client_id", clientId);
@@ -38,15 +40,15 @@ export async function getAccessToken(clientId, code, redirectUri) {
   return access_token;
 }
 
-export async function fetchWebApi(endpoint, token, method, body) {
-  const res = await fetch(`https://api.spotify.com/${endpoint}`, {
+export async function getUserInfo() {
+  const result = await fetch("https://api.spotify.com/v1/me", {
+    method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${sessionStorage.getItem(appKeys.tokenId)}`,
     },
-    method,
-    body: JSON.stringify(body),
   });
-  return await res.json();
+
+  return await result.json();
 }
 
 function generateCodeVerifier(length) {

@@ -165,6 +165,19 @@ ul li {
   padding: 1rem;
 }
 
+.login-disabled {
+  background-color: rgba(171, 75, 250, 0.1);
+  cursor: default;
+}
+
+.login-disabled:hover {
+  background-color: rgba(171, 75, 250, 0.15);
+}
+
+#logout {
+  visibility: hidden;
+}
+
 /* Playlist Settings */
 .form-playlist {
   max-width: 25vw;

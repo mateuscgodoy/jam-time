@@ -4,12 +4,12 @@ import Background from "./Components/Background/Background";
 import SearchResult from "./Components/SearchResults/SearchResults";
 import Playlist from "./Components/Playlist/Playlist";
 import SearchBar from "./Components/SearchBar/SearchBar";
-import Authorization from "./Components/Auth/Authorization";
 import Login from "./Components/Login/Login";
 
 function App() {
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [searchResult, setSearchResult] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
 
   function selectTrack(event) {
     const selectedSong =
@@ -38,14 +38,14 @@ function App() {
 
   return (
     <Background>
-      <Authorization />
+      {/* <Authorization /> */}
       <section id="main-body">
         <h1>
           Jam
           <br />
           Time!
         </h1>
-        <Login />
+        <Login setUserInfo={setUserInfo} />
         <SearchBar setSearchResult={setSearchResult} />
         <section className="lists-section">
           <div>
