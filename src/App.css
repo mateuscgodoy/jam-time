@@ -68,20 +68,20 @@ button:hover {
   transition: background-color 1s;
 }
 
-input {
+input,
+textarea {
   background-color: rgba(45, 45, 45, 0.25);
   color: white;
   border: 0;
   border-bottom: 2px solid rgb(183, 118, 244);
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   outline: none;
   background-color: rgba(45, 45, 45, 1);
   transition: background-color 1.2s;
 }
-
-
 
 img {
   position: absolute;
@@ -97,8 +97,7 @@ ul {
   background-color: rgba(17, 17, 17, 0.5);
   background-image:
     linear-gradient(rgba(17, 17, 17, 0.85), rgba(30, 30, 30, 0.85));
-  height: 60vh;
-  min-width: 25vw;
+  height: 55vh;
   position: relative;
   border-radius: 1em;
   padding: 1em 0;
@@ -185,18 +184,12 @@ ul li {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .user-playlist {
   display: flex;
   flex-direction: column;
-}
-
-.search-section {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0.5em;
-
 }
 
 .search-section input,
@@ -218,7 +211,34 @@ ul li {
   padding: 0.5rem;
 }
 
+/* NEW PLAYLIST SECTION */
+
+.search-section {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0.5em;
+  flex-basis: 60%;
+}
+
+#common-part {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#common-part button {
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  margin: 0 0.5em;
+  padding: 1rem;
+}
+
+#deploy-playlist {
+  display: none;
+  flex-direction: column;
+}
+
 /* Search Bar Settings */
+
 .search-bar {
   min-height: 10vh;
   margin: 10vh 0 3em 0;
@@ -238,13 +258,17 @@ ul li {
 .lists-section {
   display: flex;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: flex-start;
   align-content: space-between;
   width: 100%;
 }
 
 .lists-section>div {
   width: 40%;
+}
+
+#search-results {
+  align-self: flex-end;
 }
 
 /* Track Settings */
@@ -279,5 +303,16 @@ ul li {
 @media only screen and (max-width:1000px) {
   #main-body {
     max-width: 100vw;
+  }
+
+  .search-bar input,
+  .search-bar button {
+    font-size: 1.25rem;
+  }
+
+  .login-section button {
+    font-size: 1rem;
+    margin: 0.25em 0;
+    padding: 0.5rem 0;
   }
 }

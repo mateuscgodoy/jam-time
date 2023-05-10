@@ -61,7 +61,7 @@ function App() {
         <Login setUserInfo={setUserInfo} />
         <SearchBar setSearchResult={setSearchResult} />
         <section className="lists-section">
-          <div>
+          <div id="search-results">
             <SearchResult
               searchResult={searchResult}
               handleClick={selectTrack}
