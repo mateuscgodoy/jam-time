@@ -26,7 +26,7 @@ function App() {
       alert("This song is already on your playlist.");
       return;
     }
-    console.log(selectedAlbum);
+
     const trackIndex = searchResult.findIndex(
       (track) => track.song === selectedSong && track.album === selectedAlbum
     );
@@ -40,15 +40,18 @@ function App() {
   function removeTrack(event) {
     const selectedSong =
       event.target.parentElement.querySelector(".song-name").innerHTML;
+    const selectedAlbum = event.target.parentElement
+      .querySelector(".album-year")
+      .innerHTML.split(" | ")[0];
+
     const updateSelection = selectedTracks.filter(
-      (track) => track.song !== selectedSong
+      (track) => track.album !== selectedAlbum || track.song !== selectedSong
     );
     setSelectedTracks(updateSelection);
   }
 
   return (
     <Background>
-      {/* <Authorization /> */}
       <section id="main-body">
         <h1>
           Jam
