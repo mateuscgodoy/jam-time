@@ -14,17 +14,27 @@ function App() {
   function selectTrack(event) {
     const selectedSong =
       event.target.parentElement.querySelector(".song-name").innerHTML;
+    const selectedAlbum = event.target.parentElement
+      .querySelector(".album-year")
+      .innerHTML.split(" | ")[0];
 
-    if (selectedTracks.some((track) => track.song === selectedSong)) {
+    if (
+      selectedTracks.some(
+        (track) => track.song === selectedSong && track.album === selectedAlbum
+      )
+    ) {
       alert("This song is already on your playlist.");
       return;
     }
-
+    console.log(selectedAlbum);
     const trackIndex = searchResult.findIndex(
-      (track) => track.song === selectedSong
+      (track) => track.song === selectedSong && track.album === selectedAlbum
     );
-    const newSelection = [...selectedTracks, searchResult[trackIndex]];
-    setSelectedTracks(newSelection);
+    // const newSelection = [...selectedTracks, searchResult[trackIndex]];
+    setSelectedTracks((prevSelection) => [
+      ...prevSelection,
+      searchResult[trackIndex],
+    ]);
   }
 
   function removeTrack(event) {

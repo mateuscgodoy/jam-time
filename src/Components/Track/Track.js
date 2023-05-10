@@ -5,7 +5,7 @@ function Track({ trackInfo }) {
   return (
     <div>
       <h4 className="song-name">{trackInfo.song}</h4>
-      <p>
+      <p className="album-year">
         {trackInfo.album} | {trackInfo.year}
       </p>
       <p>
