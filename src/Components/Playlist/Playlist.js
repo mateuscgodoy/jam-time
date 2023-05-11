@@ -32,16 +32,22 @@ function Playlist({ tracks, handleClick }) {
   return (
     <form id="submit-form">
       <section id="common-part">
-        <div className="search-section">
+        <div id="form-name-div" className="input-flex">
           <label htmlFor="playlist-name">Playlist Name</label>
           <input
+            className="form-inputs"
             id="playlist-name"
             type="text"
             onChange={handleChange}
             value={playlistName}
+            required
           />
         </div>
-        <button id="continue-button" onClick={handleClickContinue}>
+        <button
+          className="form-inputs"
+          id="continue-button"
+          onClick={handleClickContinue}
+        >
           Continue
         </button>
       </section>
@@ -55,52 +61,35 @@ function Playlist({ tracks, handleClick }) {
       <section id="deploy-playlist">
         <h2>{playlistName}</h2>
 
-        <label htmlFor="playlist-description">Description</label>
-        <textarea
-          id="description"
-          name="description"
-          rows="5"
-          cols="40"
-        ></textarea>
+        <div className="input-flex">
+          <label htmlFor="playlist-description">Description</label>
+          <textarea
+            id="description"
+            className="form-inputs"
+            name="description"
+            rows="5"
+            cols="40"
+          ></textarea>
+        </div>
 
-        <label htmlFor="playlist-collaborative">Collaborative</label>
-        <input type="checkbox" id="playlist-collaborative" />
-        <label>
-          <input type="radio" name="privacy" value="public" />
-          Public
-        </label>
-        <label>
-          <input type="radio" name="privacy" value="private" />
-          Private
-        </label>
-        <button type="submit">Send to Spotify</button>
+        <div className="horiz-form-div">
+          <input type="checkbox" id="playlist-collaborative" />
+          <label htmlFor="playlist-collaborative">Collaborative</label>
+        </div>
+        <div className="horiz-form-div">
+          <label>
+            <input type="radio" name="privacy" value="public" />
+            Public
+          </label>
+          <label>
+            <input type="radio" name="privacy" value="private" />
+            Private
+          </label>
+        </div>
+        <button className="form-inputs" type="submit">
+          Send to Spotify
+        </button>
       </section>
-      {/* <form className="form-playlist">
-        <div className="search-section">
-          <label htmlFor="playlist-name">Playlist Name</label>
-          <input
-            id="playlist-name"
-            type="text"
-            onChange={handleChange}
-            value={playlistName}
-          />
-        </div>
-        <button onClick={handleClickContinue}>Continue</button>
-        <div id="continue-form" className="continue-form after-continue">
-          <p>{playlistName}</p>
-          <p>Blah Blah Blah</p>
-          <p>Blah Blah Blah</p>
-          <p>Blah Blah Blah</p>
-          <button type="submit">Send Playlist to Spotify</button>
-        </div>
-      </form>
-      <div id="playlist">
-        <Tracklist
-          tracks={tracks}
-          title={playlistName}
-          buttonElement={trackButton}
-        />
-      </div> */}
     </form>
   );
 }
